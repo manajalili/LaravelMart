@@ -22,4 +22,11 @@ class Product extends Model
     protected $casts = [
         'price' => 'integer',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orderItems() {
+        return $this->hasMany(OrderItem::class, "product_id");
+    }
 }
