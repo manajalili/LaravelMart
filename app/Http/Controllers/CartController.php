@@ -7,16 +7,15 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // Add product to the session cart
     public function add(Product $product)
     {
-        // Retrieve the current cart from session or initialize an empty cart if none exists
         $cart = session()->get('cart', []);
 
         if (isset($cart[$product->id])) {
             $cart[$product->id]['quantity']++;
         } else {
             $cart[$product->id] = [
+                'product_id' => $product->id,
                 'name' => $product->name,
                 'info' => $product->info,
                 'price' => $product->price,
@@ -27,7 +26,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->route('cart.review');
+        return redirect()->route('product.index');
     }
 
     public function view()
