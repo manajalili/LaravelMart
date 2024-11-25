@@ -11,13 +11,7 @@ class Order extends Model
      */
     protected $fillable = [
         "shipping_address",
-    ];
-
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'total_price' => 'integer',
+        "total_price"
     ];
 
     /**

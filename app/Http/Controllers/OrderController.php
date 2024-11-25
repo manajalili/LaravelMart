@@ -21,7 +21,6 @@ class OrderController extends Controller
         foreach ($cart as $item) {
             $total += $item['price'] * $item['quantity'];
         }
-    
 
         $order = Order::create([
             'total_price' => $total,
@@ -31,13 +30,14 @@ class OrderController extends Controller
         foreach ($cart as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
+                'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],
             ]);
         }
 
         session()->forget('cart');
 
-        return redirect()->route('order.confirmation', $order->id);
+        return redirect()->route('order.confirmation', ['order' => $order->id]);
     }
 
     /**
@@ -48,7 +48,7 @@ class OrderController extends Controller
      */
     public function orderConfirmation($orderId)
     {
-        $order = Order::find($orderId);
+        $order = Order::with('orderItems.product')->findOrFail($orderId);
 
         if (!$order) {
             return redirect()->route('/')->with('error', 'Order not found.');

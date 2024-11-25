@@ -26,7 +26,7 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orderItems() {
+    public function orderItem() {
         return $this->hasMany(OrderItem::class, "product_id");
     }
 }

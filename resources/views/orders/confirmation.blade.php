@@ -20,12 +20,13 @@
         <tbody>
             @foreach($order->orderItems as $item)
                 <tr>
-                    <td>{{ $item->product->name }}</td>
-                    <td>${{ $item->product->price }}</td>
+                    <td>{{ optional($item->product)->name ?? 'Product Not Found' }}</td>
+                    <td>${{ optional($item->product)->price ?? 0 }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>${{ $item->product->price * $item->quantity }}</td>
+                    <td>${{ optional($item->product)->price * $item->quantity ?? 0 }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('product.index') }}" class="mt-3 btn btn-success">Continue Shopping</a>
 @endsection
