@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [ProductController::class, 'index']);
 
@@ -12,3 +13,7 @@ Route::resources([
     'order' => OrderController::class,
     'order_item' => OrderItemController::class,
 ]);
+
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'view'])->name('cart.review');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
