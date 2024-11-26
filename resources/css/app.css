@@ -4,3 +4,7 @@ h1 {
     color: #333 !important;
     text-align: center !important;
 }
+
+.order-button:hover {
+    background-color: #343a40 !important;
+}

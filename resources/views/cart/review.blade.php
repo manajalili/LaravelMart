@@ -35,11 +35,11 @@
                 return $item['price'] * $item['quantity'];
             }, $cart)), 2) }}</p>
 
-            <a href="{{ route('cart.clear') }}" class="mt-3 btn btn-danger">Clear Cart</a>
+            <a href="{{ route('cart.clear') }}" class="mt-3 btn btn-warning">Clear Cart</a>
             <a href="{{ route('product.index') }}" class="mt-3 btn btn-success">Continue Shopping</a>
             <form action="{{ route('order.create') }}" method="POST">
                 @csrf
-                <button type="submit" class="mt-3 btn btn-dark">Make an Order</button>
+                <button type="submit" class="order-button mt-3">Make an Order</button>
             </form>
         @else
             <p>Your cart is empty.</p>
