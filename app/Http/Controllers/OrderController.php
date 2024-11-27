@@ -23,12 +23,14 @@ class OrderController extends Controller
         }
 
         $order = Order::create([
+            'user_id' => auth()->id(),
             'total_price' => $total,
             'shipping_address' => $request->shipping_address,
         ]);
 
         foreach ($cart as $item) {
             OrderItem::create([
+                // 'user_id' => auth()->id(),
                 'order_id' => $order->id,
                 'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],

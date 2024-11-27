@@ -14,21 +14,16 @@ Route::middleware('auth')->group(function () {
     })->name('checkout');
 
     Route::post('/orders', [OrderController::class, 'create'])->name('order.create');
+    Route::get('/orders/{order}', [OrderController::class, 'orderConfirmation'])->name('order.confirmation');
 });
 
 
-Route::get('/', [ProductController::class, 'index']);
-
-Route::resources([
-    'product' => ProductController::class,
-    'order' => OrderController::class,
-    'order_item' => OrderItemController::class,
-]);
+Route::get('/', [ProductController::class, 'index'])->name('product.index');
 
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'view'])->name('cart.review');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-Route::get('/orders/{order}', [OrderController::class, 'orderConfirmation'])->name('order.confirmation');
+
 
 
 Route::get('/dashboard', function () {

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('shipping_address')->nullable();
             $table->timestamps();
 
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
