@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('welcome')
 
 @section('content')
 <div class="row d-flex justify-content-center mt-5 p-5 border">
@@ -35,11 +35,11 @@
                 return $item['price'] * $item['quantity'];
             }, $cart)), 2) }}</p>
 
-            <a href="{{ route('cart.clear') }}" class="mt-3 btn btn-warning">Clear Cart</a>
+            <a href="{{ route('cart.clear') }}" class="mt-3 btn btn-light border">Clear Cart</a>
             <a href="{{ route('product.index') }}" class="mt-3 btn btn-success">Continue Shopping</a>
-            <form action="{{ route('order.create') }}" method="POST">
+            <form action="{{ route('checkout') }}" method="GET">
                 @csrf
-                <button type="submit" class="order-button mt-3">Make an Order</button>
+                <button type="submit" class="btn btn-dark mt-3">Checkout</button>
             </form>
         @else
             <p>Your cart is empty.</p>

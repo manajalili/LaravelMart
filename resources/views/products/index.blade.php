@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('welcome')
 
 @section('content')
     <div>
@@ -24,7 +24,7 @@
 
                         <form action="{{ route('cart.add', $product->id) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-info">Add to Cart</button>
+                            <button type="submit" class="btn btn-dark">Add to Cart</button>
                         </form>
                     </div>
                 </div>
