@@ -28,5 +28,6 @@
             @endforeach
         </tbody>
     </table>
+    <p>An email has been sent to {{$order->user->email}}</p>
     <a href="{{ route('product.index') }}" class="mt-3 btn btn-success">Continue Shopping</a>
 @endsection
